@@ -1,3 +1,4 @@
+import checkout.Checkout
 import discount.BuyNGetOneFree
 import item.Item._
 
@@ -6,11 +7,12 @@ import item.Item._
  */
 object Main extends App {
 
-  val checkout = new Checkout(Seq(BuyNGetOneFree(Apple, 2), BuyNGetOneFree(Orange, 3)))
-  val items = Seq(Apple, Apple, Orange, Apple)
-  val total = checkout.getTotalCost(items)
+  val checkout = new Checkout()
+  val items = Seq(Apple, Apple, Orange, Apple, Orange, Banana, Banana)
+  val receipt = checkout.buildReceipt(items)
 
   println(s"Items: $items")
-  println(s"Total: £$total")
+  println(receipt.items2Print)
+  println(s"Total: £${receipt.total}")
 
 }

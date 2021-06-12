@@ -1,5 +1,6 @@
 package discount
 
+import checkout.Checkout.ItemsMap
 import item.Item
 
 /**
@@ -7,7 +8,9 @@ import item.Item
  */
 case class BuyNGetOneFree(item: Item, n: Int) extends Discount {
 
-  def getDiscount(items: Seq[Item]): BigDecimal =
-    (items.count(_ == item) / n).toInt * item.price
+  def applyDiscount(itemsMap: ItemsMap): ItemsMap =
+    itemsMap.updatedWith(item)(_.map {
+      (count, total) => (count, total - (count / n).toInt * item.price)
+    })
 
 }

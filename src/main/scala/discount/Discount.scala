@@ -1,12 +1,12 @@
 package discount
 
-import item.Item
+import checkout.Checkout.ItemsMap
 
 /**
  * @author Yuriy Tumakha
  */
 trait Discount {
 
-  def getDiscount(items: Seq[Item]): BigDecimal
+  def applyDiscount(itemsMap: ItemsMap): ItemsMap
 
 }
