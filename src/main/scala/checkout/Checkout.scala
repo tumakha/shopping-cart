@@ -13,9 +13,7 @@ object Checkout {
   type ItemsMap = Map[Item, (Int, BigDecimal)]
 
   val defaultDiscounts = Seq(
-    BuyNGetOneFree(Apple, 2),
-    BuyNGetOneFree(Orange, 3),
-    BuyNGetOneFree(Banana, 2),
+    BuyNGetOneFree(2 -> Seq(Apple, Banana), 3 -> Seq(Orange)),
     CheapestFree(Apple, Banana)
   )
 
